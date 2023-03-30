@@ -24,7 +24,6 @@
 				source="[name=example]"
 			/>
 		</div>
-		<script src="lighting.js"></script>
 		<img class="slider-image" src={lightoff} />
 		<input class="slider" name="example" type="range" max="100" min="0" value="50" step="1" />
 		<img class="slider-image" src={lighton} />

@@ -1,6 +1,7 @@
 import { PUBLIC_PROXY_ENDPOINT } from '$env/static/public';
 import { createWebSocketStuff } from '$lib/websocket';
 
+import "@fontsource/inter/variable.css";
 import '../app.postcss';
 
 export const ssr = false;
