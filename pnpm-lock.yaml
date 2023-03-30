@@ -13,6 +13,12 @@ devDependencies:
   '@fontsource/inter':
     specifier: ^4.5.15
     version: 4.5.15
+  '@iconify-icons/bxs':
+    specifier: ^1.2.6
+    version: 1.2.6
+  '@iconify/svelte':
+    specifier: ^3.1.0
+    version: 3.1.0(svelte@3.57.0)
   '@playwright/test':
     specifier: ^1.32.1
     version: 1.32.1
@@ -55,6 +61,9 @@ devDependencies:
   tailwindcss:
     specifier: ^3.3.0
     version: 3.3.0(postcss@8.4.21)
+  tailwindcss-theme-variants:
+    specifier: 2.0.0-alpha.2
+    version: 2.0.0-alpha.2(tailwindcss@3.3.0)
   typescript:
     specifier: ^4.9.5
     version: 4.9.5
@@ -352,6 +361,25 @@ packages:
 
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: true
+
+  /@iconify-icons/bxs@1.2.6:
+    resolution: {integrity: sha512-pDJZgTigltdvlExgRaY8V5fH4C7aJKB1xm42auO6oRwLXw7vFLrBtfz42MWmtczGE3LRzoTORU8OcLMyjVTQtg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify/svelte@3.1.0(svelte@3.57.0):
+    resolution: {integrity: sha512-G1w1dcO7eiD+JmQJNwNW4qnAn86oQxKLe1P/iAPjJ0qYYuF7Pb60TPrlcj4+2gu4SXe3a0Jrv++8YmceG+gX/g==}
+    peerDependencies:
+      svelte: '>=3'
+    dependencies:
+      '@iconify/types': 2.0.0
+      svelte: 3.57.0
+    dev: true
+
+  /@iconify/types@2.0.0:
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
     dev: true
 
   /@jridgewell/resolve-uri@3.1.0:
@@ -1333,6 +1361,10 @@ packages:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
 
+  /lodash@4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: true
+
   /loupe@2.3.6:
     resolution: {integrity: sha512-RaPMZKiMy8/JruncMU5Bt6na1eftNoo++R4Y+N2FrxkDVTrGvcyzFTsaGif4QTeKESheMGegbhw6iUAq+5A8zA==}
     dependencies:
@@ -2056,6 +2088,16 @@ packages:
   /svelte@3.57.0:
     resolution: {integrity: sha512-WMXEvF+RtAaclw0t3bPDTUe19pplMlfyKDsixbHQYgCWi9+O9VN0kXU1OppzrB9gPAvz4NALuoca2LfW2bOjTQ==}
     engines: {node: '>= 8'}
+    dev: true
+
+  /tailwindcss-theme-variants@2.0.0-alpha.2(tailwindcss@3.3.0):
+    resolution: {integrity: sha512-4eBx9dpyuFOqkVRAOTsThXh40XQMWR3nxse7UQRk1L5jfnJrgTW3lNX/n3PqjfziPV2mYPzvv+GKWqYjBYxQiw==}
+    peerDependencies:
+      tailwindcss: ^1.9.6 || ^2.1.1
+    dependencies:
+      lodash: 4.17.21
+      postcss-selector-parser: 6.0.11
+      tailwindcss: 3.3.0(postcss@8.4.21)
     dev: true
 
   /tailwindcss@3.3.0(postcss@8.4.21):

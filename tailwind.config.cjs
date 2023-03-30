@@ -1,4 +1,7 @@
-import defaultConfig from 'tailwindcss/defaultConfig';
+const defaultConfig = require('tailwindcss/defaultConfig');
+
+const { themeVariants } = require('tailwindcss-theme-variants');
+const { light_dark } = require('./theme-styles.cjs');
 
 const defaultTheme = defaultConfig.theme;
 
@@ -12,5 +15,5 @@ module.exports = {
 			}
 		}
 	},
-	plugins: []
+	plugins: [themeVariants(light_dark)]
 };

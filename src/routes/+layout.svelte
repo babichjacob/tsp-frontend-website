@@ -26,6 +26,20 @@
 	// 	// as part of a critical journey.
 	// 	showInAppInstallPromotion();
 	// });
+
+	import Icon from '@iconify/svelte/dist/OfflineIcon.svelte';
+
+	import bulb from '@iconify-icons/bxs/bulb';
+	import cameraHome from '@iconify-icons/bxs/camera-home';
+	import shield from '@iconify-icons/bxs/shield';
+	import videoRecording from '@iconify-icons/bxs/video-recording';
+
+	const links = [
+		{ href: '/lighting', text: 'Lighting', icon: bulb },
+		{ href: '/recordings', text: 'Recordings', icon: videoRecording },
+		{ href: '/security', text: 'Security', icon: shield },
+		{ href: '/live-feed', text: 'Live Feed', icon: cameraHome }
+	];
 </script>
 
 <div class="header">
@@ -80,12 +94,23 @@
 	</div>
 </div>
 
-<div id="mySidebar" class="sidebar">
+<div id="mySidebar" class="sidebar bg-primary">
 	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;</a>
-	<a href="/lighting">Lighting</a>
-	<a href="/security">Security</a>
-	<a href="/recordings">Recordings</a>
-	<a href="/live-feed">Live Feed</a>
+	<div class="px-4 flex flex-col gap-y-4">
+		{#each links as { href, icon, text }}
+			<a {href} class="flex flex-row items-center group gap-x-2 text-xl">
+				<Icon
+					{icon}
+					inline
+					class="inline-block text-on-primary-dimmer-more group-hover:text-on-primary  transition-colors duration-500 ease-out"
+				/>
+				<span
+					class="text-on-primary-dimmer group-hover:text-on-primary transition-colors duration-500 ease-out"
+					>{text}</span
+				>
+			</a>
+		{/each}
+	</div>
 </div>
 
 <slot />
@@ -97,6 +122,13 @@
 
 	<title>{$page.data.title}</title>
 
+	<!-- TODO: extract out as much as I can to be regular svelte -->
+	<!-- TODO: extract out as much as I can to be regular svelte -->
+	<!-- TODO: extract out as much as I can to be regular svelte -->
+	<!-- TODO: extract out as much as I can to be regular svelte -->
+	<!-- TODO: extract out as much as I can to be regular svelte -->
+	<!-- TODO: extract out as much as I can to be regular svelte -->
+	<!-- TODO: extract out as much as I can to be regular svelte -->
 	<!-- TODO: extract out as much as I can to be regular svelte -->
 	<script src={interactivity}></script>
 </svelte:head>
