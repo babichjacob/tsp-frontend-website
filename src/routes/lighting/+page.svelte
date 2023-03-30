@@ -4,9 +4,6 @@
 	import powerButton from './PowerButton.png';
 	import powerButtonOn from './PowerButtonOn.png';
 
-	// TODO: scope styles
-	import './lighting.css';
-
 	let powerOn = false;
 </script>
 
