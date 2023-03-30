@@ -1,9 +1,13 @@
 <script>
 	import { page } from '$app/stores';
 
-    import login_avatar from "./login_avatar.png";
+	// TODO: does this actually use the ico format?
+	import faviconIco from './favicon.png?width=32&height=32&format=ico';
+	import favicon from './favicon.png?width=128&height=128&format=png';
+	import appleTouchIcon from './favicon.png?width=180&height=180&format=png';
 
-    
+	import login_avatar from './login_avatar.png';
+
 	import interactivity from './interactivity.js?url';
 </script>
 
@@ -70,8 +74,12 @@
 <slot />
 
 <svelte:head>
+	<link rel="icon" href={faviconIco} />
+	<link rel="shortcut icon" type="image/png" href={favicon} />
+	<link rel="apple-touch-icon" href={appleTouchIcon} />
+
 	<title>{$page.data.title}</title>
 
-    <!-- TODO: extract out as much as I can to be regular svelte -->
+	<!-- TODO: extract out as much as I can to be regular svelte -->
 	<script src={interactivity}></script>
 </svelte:head>
