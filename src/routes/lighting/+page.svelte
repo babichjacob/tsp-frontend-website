@@ -1,6 +1,4 @@
 <script>
-	import javascript from './lighting.js?url';
-
 	import lightoff from './lightoff.png';
 	import lighton from './lighton.png';
 	import powerButton from './PowerButton.png';
@@ -8,6 +6,8 @@
 
 	// TODO: scope styles
 	import './lighting.css';
+
+	let powerOn = false;
 </script>
 
 <h1>Room Lights</h1>
@@ -151,7 +151,3 @@
 		</div>
 	</div>
 </div>
-
-<svelte:head>
-	<script src={javascript}></script>
-</svelte:head>

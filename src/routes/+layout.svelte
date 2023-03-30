@@ -2,6 +2,9 @@
 	import { page } from '$app/stores';
 
     import login_avatar from "./login_avatar.png";
+
+    
+	import interactivity from './interactivity.js?url';
 </script>
 
 <div class="header">
@@ -68,4 +71,7 @@
 
 <svelte:head>
 	<title>{$page.data.title}</title>
+
+    <!-- TODO: extract out as much as I can to be regular svelte -->
+	<script src={interactivity}></script>
 </svelte:head>
