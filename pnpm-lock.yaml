@@ -10,9 +10,15 @@ devDependencies:
   '@babichjacob/store':
     specifier: ^0.0.1
     version: 0.0.1
+  '@babichjacob/svelte-localstorage':
+    specifier: ^1.0.1
+    version: 1.0.1
   '@fontsource/inter':
     specifier: ^4.5.15
     version: 4.5.15
+  '@iconify-icons/bx':
+    specifier: ^1.2.6
+    version: 1.2.6
   '@iconify-icons/bxs':
     specifier: ^1.2.6
     version: 1.2.6
@@ -98,6 +104,12 @@ packages:
 
   /@babichjacob/store@0.0.1:
     resolution: {integrity: sha512-HbB3IQjeYOwmjwjSmtWyHyBw0bRK1YeGXkkZrPYrcBLzA1skI3tOAmCTfiFOYXojFh8hc/8jfzc/G4KBwSzcjg==}
+    dev: true
+
+  /@babichjacob/svelte-localstorage@1.0.1:
+    resolution: {integrity: sha512-FTIIpUTq08vVWffEQAH9P3NaLMT0c/MjFbkgCCThCWw4E1lpkt2zKapSbJxkWxbuU5fRmM38VsixBqGr7FtNkg==}
+    dependencies:
+      svelte: 3.58.0
     dev: true
 
   /@babichjacob/unbounded-queue@0.0.1:
@@ -364,6 +376,12 @@ packages:
 
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: true
+
+  /@iconify-icons/bx@1.2.6:
+    resolution: {integrity: sha512-D8Ns/AqQoJzTxfrlpRWfh53m/0Uh2bMjgvGlVrmBw+1HrNyCJgqEa6mo2KAtZ4xjvzHn0cjTOnu+R0KYq+RmSg==}
+    dependencies:
+      '@iconify/types': 2.0.0
     dev: true
 
   /@iconify-icons/bxs@1.2.6:

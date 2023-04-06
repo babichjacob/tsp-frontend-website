@@ -7,8 +7,7 @@
 	let powerOn = false;
 </script>
 
-<h1>Room Lights</h1>
-<div id="main" class="light-control">
+<div class="light-control">
 	<div class="slider-container">
 		<!-- <input type="range" class="slider" id="myRange" min="1" max="100" value="50">
         <div>Value: <span id="demo"> <input type="text" placeholder="test"></span></div> -->

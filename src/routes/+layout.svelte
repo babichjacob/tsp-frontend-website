@@ -6,10 +6,6 @@
 	import favicon from './favicon.png?width=128&height=128&format=png';
 	import appleTouchIcon from './favicon.png?width=180&height=180&format=png';
 
-	import login_avatar from './login_avatar.png';
-
-	import interactivity from './interactivity.js?url';
-
 	// // This variable will save the event for later use.
 	// let deferredPrompt;
 	// window.addEventListener('beforeinstallprompt', (e) => {
@@ -26,94 +22,146 @@
 	// 	// as part of a critical journey.
 	// 	showInAppInstallPromotion();
 	// });
+	import { beforeNavigate } from '$app/navigation';
 
 	import Icon from '@iconify/svelte/dist/OfflineIcon.svelte';
 
 	import bulb from '@iconify-icons/bxs/bulb';
+	import calendar from '@iconify-icons/bxs/calendar';
 	import cameraHome from '@iconify-icons/bxs/camera-home';
-	import shield from '@iconify-icons/bxs/shield';
-	import videoRecording from '@iconify-icons/bxs/video-recording';
+	// import shield from '@iconify-icons/bxs/shield';
+	// import videoRecording from '@iconify-icons/bxs/video-recording';
+	import menu from '@iconify-icons/bx/menu';
+	import x from '@iconify-icons/bx/x';
 
 	const links = [
 		{ href: '/lighting', text: 'Lighting', icon: bulb },
-		{ href: '/recordings', text: 'Recordings', icon: videoRecording },
-		{ href: '/security', text: 'Security', icon: shield },
-		{ href: '/live-feed', text: 'Live Feed', icon: cameraHome }
+		{ href: '/live-feed', text: 'Live Feed', icon: cameraHome },
+		{ href: '/history', text: 'History', icon: calendar }
 	];
+
+	const adminLinks = [
+		// TODO
+		{ href: '/lighting', text: 'Add Trusted User', icon: bulb },
+		{ href: '/live-feed', text: 'Live Feed', icon: cameraHome },
+		{ href: '/history', text: 'History', icon: calendar }
+	];
+
+	let navOpen = false;
+
+	beforeNavigate(() => {
+		navOpen = false;
+	});
 </script>
 
-<div class="header">
-	<div class="left-header">
-		<div>
-			<!-- add id="main" to push button to right-->
-			<button class="openbtn" onclick="openNav()">&#9776;</button>
-			<span style="margin-left: 15px;">Team Second Place</span>
-		</div>
-	</div>
-	<div class="right-header">
-		<button
-			class="login-button"
-			onclick="document.getElementById('id01').style.display='block'"
-			style="width:auto;">Login</button
-		>
-
-		<div id="id01" class="modal">
-			<span
-				onclick="document.getElementById('id01').style.display='none'"
-				class="close"
-				title="Close Modal">&times;</span
-			>
-
-			<form class="modal-content animate" action="/action_page.php" method="post">
-				<div class="imgcontainer">
-					<img src={login_avatar} alt="Avatar" class="avatar" />
-				</div>
-				<div class="container">
-					<label for="uname"><b>Username</b></label>
-					<input type="text" placeholder="Enter Username" name="uname" required />
-
-					<label for="psw"><b>Password</b></label>
-					<input type="password" placeholder="Enter Password" name="psw" required />
-
-					<button type="submit" class="login-button">Login</button>
-					<label>
-						<input type="checkbox" checked="checked" name="remember" /> Remember me
-					</label>
-				</div>
-
-				<div class="container" style="background-color: #e9e9e9">
+<div class="bg-primary/75 flex-1 flex flex-col">
+	<div
+		class="h-screen fixed z-1 top-0 left-0 flex flex-col overflow-x-hidden transition-[width] duration-500 ease-out"
+		class:w-0={!navOpen}
+		class:w-64={navOpen}
+	>
+		<div class="p-3 pr-0 flex-1 flex flex-col">
+			<div class="flex-1 flex flex-col rounded-xl backdrop-blur-xl bg-primary/50">
+				<div class="flex justify-end p-3">
 					<button
-						type="button"
-						onclick="document.getElementById('id01').style.display='none'"
-						class="cancelbtn">Cancel</button
+						class="flex items-center group gap-x-2 text-xl"
+						on:click={() => {
+							navOpen = false;
+						}}
 					>
-					<span class="psw">Forgot <a href="#">password?</a></span>
+						<span
+							class="text-on-primary-dimmer group-hover:text-on-primary transition-colors duration-500 ease-out"
+							>Close</span
+						>
+						<Icon
+							icon={x}
+							inline
+							class="inline-block text-on-primary-dimmer-more group-hover:text-on-primary transition-colors duration-500 ease-out"
+						/>
+						<!-- </div> -->
+					</button>
 				</div>
-			</form>
+				<div class="flex-1 flex flex-col justify-between">
+					<div class="px-4 flex flex-col gap-y-4">
+						{#each links as { href, icon, text }}
+							<a {href} class="flex flex-row items-center group gap-x-2 text-xl w-64">
+								<Icon
+									{icon}
+									inline
+									class="inline-block text-on-primary-dimmer-more group-hover:text-on-primary transition-colors duration-500 ease-out"
+								/>
+								<span
+									class="text-on-primary-dimmer group-hover:text-on-primary transition-colors duration-500 ease-out"
+									>{text}</span
+								>
+							</a>
+						{/each}
+					</div>
+
+					<div class="px-4 flex flex-col gap-y-4">
+						{#each adminLinks as { href, icon, text }}
+							<a {href} class="flex flex-row items-center group gap-x-2 text-xl w-64">
+								<Icon
+									{icon}
+									inline
+									class="inline-block text-on-primary-dimmer-more group-hover:text-on-primary transition-colors duration-500 ease-out"
+								/>
+								<span
+									class="text-on-primary-dimmer group-hover:text-on-primary transition-colors duration-500 ease-out"
+									>{text}</span
+								>
+							</a>
+						{/each}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div
+		class="flex-1 flex flex-col transition-[margin] duration-500 ease-out p-3 gap-3"
+		class:ml-64={navOpen}
+		class:-mr-64={navOpen}
+	>
+		<div
+			class="flex flex-row justify-between items-center rounded-xl p-3 backdrop-filter backdrop-blur-md bg-primary/50"
+		>
+			<div class="text-xl">
+				{#if $page.data.canOpenNav}
+					<div class="flex gap-x-4">
+						<button
+							on:click={() => {
+								navOpen = !navOpen;
+							}}
+							class="text-primary bg-on-primary p-4 rounded-xl"
+						>
+							<Icon icon={menu} />
+						</button>
+					</div>
+				{/if}
+			</div>
+
+			<div class="text-2xl font-semibold">
+				{$page.data.title}
+			</div>
+
+			<!-- Perfectly center the title text -->
+			<div class="text-xl opacity-0 pointer-events-none">
+				<div class="flex gap-x-4">
+					<button class="text-primary bg-on-primary p-4 rounded-xl">
+						<Icon icon={menu} />
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div
+			class="flex-1 flex flex-col justify-between items-center rounded-xl p-3 backdrop-filter backdrop-blur-md bg-primary/50"
+		>
+			<slot />
 		</div>
 	</div>
 </div>
-
-<div id="mySidebar" class="sidebar bg-primary">
-	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;</a>
-	<div class="px-4 flex flex-col gap-y-4">
-		{#each links as { href, icon, text }}
-			<a {href} class="flex flex-row items-center group gap-x-2 text-xl">
-				<Icon
-					{icon}
-					inline
-					class="inline-block text-on-primary-dimmer-more group-hover:text-on-primary  transition-colors duration-500 ease-out"
-				/>
-				<span
-					class="text-on-primary-dimmer group-hover:text-on-primary transition-colors duration-500 ease-out"
-					>{text}</span
-				>
-			</a>
-		{/each}
-	</div>
-</div>
-
-<slot />
 
 <svelte:head>
 	<link rel="icon" href={faviconIco} />
@@ -121,14 +169,4 @@
 	<link rel="apple-touch-icon" href={appleTouchIcon} />
 
 	<title>{$page.data.title}</title>
-
-	<!-- TODO: extract out as much as I can to be regular svelte -->
-	<!-- TODO: extract out as much as I can to be regular svelte -->
-	<!-- TODO: extract out as much as I can to be regular svelte -->
-	<!-- TODO: extract out as much as I can to be regular svelte -->
-	<!-- TODO: extract out as much as I can to be regular svelte -->
-	<!-- TODO: extract out as much as I can to be regular svelte -->
-	<!-- TODO: extract out as much as I can to be regular svelte -->
-	<!-- TODO: extract out as much as I can to be regular svelte -->
-	<script src={interactivity}></script>
 </svelte:head>

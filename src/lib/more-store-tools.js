@@ -19,6 +19,44 @@ export const filtered = (emitter, predicate) => {
 
 /**
  * @template Event
+ * @param {import("@babichjacob/emitter").Listenable<Event>} emitter
+ * @param {function(Event): Promise<boolean>} predicate
+ * @returns {import("@babichjacob/emitter").Listenable<Event>}
+ */
+export const asyncFiltered = (emitter, predicate) => {
+	return listenable(
+		/** @param {import("@babichjacob/emitter").Emit<Event>} emit */
+		(emit) =>
+			emitter.listen(async (event) => {
+				if (await predicate(event)) emit(event);
+			})
+	);
+};
+
+/**
+ * @template Event
+ * @template MappedEvent
+ * @param {import("@babichjacob/emitter").Listenable<Event>} emitter
+ * @param {function(Event): [] | [MappedEvent]} predicate
+ * @returns {import("@babichjacob/emitter").Listenable<MappedEvent>}
+ */
+export const asyncFilteredMapped = (emitter, predicate) => {
+	return listenable(
+		/** @param {import("@babichjacob/emitter").Emit<MappedEvent>} emit */
+		(emit) =>
+			emitter.listen(async (event) => {
+				const mapped = await predicate(event);
+
+				if (!mapped.length) return;
+
+				const [mappedEvent] = mapped;
+				emit(mappedEvent);
+			})
+	);
+};
+
+/**
+ * @template Event
  * @param {import('@babichjacob/emitter').Listenable<Event>} emitter
  * @param {Event} initial
  * @returns {import("@babichjacob/store").Readable<Event>}

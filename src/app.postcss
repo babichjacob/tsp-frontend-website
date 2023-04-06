@@ -1,46 +1,24 @@
 @tailwind base;
 
 body {
-	background-color: #9ac8cf;
 	background-image: url('./backdrop.png');
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: 100% 100%;
-	/* margin-bottom: 300px; */
-}
-
-/* Bordered form */
-form {
-	border: 3px solid #f1f1f1;
+	@apply bg-cover bg-center backdrop-blur-sm;
 }
 
 /* Full-width inputs */
 input[type='text'],
 input[type='password'] {
 	width: 100%;
-	padding: 12px 20px;
-	margin: 8px 0;
-	display: inline-block;
-	border: 1px solid #ccc;
-	box-sizing: border-box;
-}
 
-/* Set a style for all buttons */
-.login-button,
-.cancelbtn {
-	background-color: #04aa6d;
-	color: white;
-	padding: 14px 20px;
-	margin: 8px 0;
-	border: none;
-	border-radius: 16px;
-	cursor: pointer;
-	width: 100%; /*ALTERS SIDEBAR BUTTON AND TIMER BUTTONS */
-}
+	@apply p-3;
 
-/* Add a hover effect for buttons */
-button:hover {
-	opacity: 0.8;
+	@apply bg-primary;
+
+	/* padding: 12px 20px; */
+	/* margin: 8px 0; */
+	/* display: inline-block; */
+	/* border: 1px solid #ccc; */
+	/* box-sizing: border-box; */
 }
 
 /* Extra style for the cancel button (red) */
@@ -50,193 +28,10 @@ button:hover {
 	background-color: #f44336;
 }
 
-/* Center the avatar image inside this container */
-.imgcontainer {
-	text-align: center;
-	margin: 24px 0 12px 0;
-}
-
-/* Avatar image */
-img.avatar {
-	width: 40%;
-	border-radius: 50%;
-}
-
-/* Add padding to containers */
-.container {
-	padding: 16px;
-}
-
 /* The "Forgot password" text */
 span.psw {
 	float: right;
 	padding-top: 16px;
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-	span.psw {
-		display: block;
-		float: none;
-	}
-	.cancelbtn {
-		width: 100%;
-	}
-}
-
-/* The Modal (background) */
-.modal {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 5; /* Sit on top */
-	left: 0;
-	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0, 0, 0); /* Fallback color */
-	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-	padding-top: 60px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-	background-color: #e9e9e9; /*#fefefe; */
-	margin: 5px auto; /* 15% from the top and centered */
-	border: 1px solid #888;
-	width: 80%; /* Could be more or less, depending on screen size */
-	margin-bottom: 200px;
-}
-
-/* The Close Button */
-.close {
-	/* Position it in the top right corner outside of the modal */
-	position: absolute;
-	right: 25px;
-	top: 0;
-	color: #000;
-	font-size: 35px;
-	font-weight: bold;
-}
-
-/* Close button on hover */
-.close:hover,
-.close:focus {
-	color: red;
-	cursor: pointer;
-}
-
-/* Add Zoom Animation */
-.animate {
-	-webkit-animation: animatezoom 0.6s;
-	animation: animatezoom 0.6s;
-}
-
-@-webkit-keyframes animatezoom {
-	from {
-		-webkit-transform: scale(0);
-	}
-	to {
-		-webkit-transform: scale(1);
-	}
-}
-
-@keyframes animatezoom {
-	from {
-		transform: scale(0);
-	}
-	to {
-		transform: scale(1);
-	}
-}
-
-/* The sidebar menu */
-.sidebar {
-	height: 100%; /* 100% Full-height */
-	width: 0; /* 0 width - change this with JavaScript */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Stay on top */
-	top: 0;
-	left: 0;
-	overflow-x: hidden; /* Disable horizontal scroll */
-	padding-top: 60px; /* Place content 60px from the top */
-	transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
-}
-
-/* The sidebar links */
-.sidebar > a:first-child {
-	/* TODO: fix the close button styles */
-	padding: 8px 8px 8px 32px;
-	/* text-decoration: none; */
-	/* font-size: 25px; */
-	/* color: #c9c9c9; */
-	/* display: block; */
-	/* transition: 0.3s; */
-}
-
-/* Position and style the close button (top right corner) */
-.sidebar .closebtn {
-	position: absolute;
-	top: 0;
-	left: 0px;
-	font-size: 25px;
-	margin-left: -15px;
-}
-
-/* The button used to open the sidebar */
-.openbtn {
-	font-size: 20px;
-	cursor: pointer;
-	background-color: #383737;
-	color: white;
-	padding: 8px 0px 8px 0px;
-	border: none;
-	border-radius: 10px;
-	width: 20%;
-}
-
-.openbtn:hover {
-	background-color: #444;
-}
-
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-	transition: margin-left 0.5s; /* If you want a transition effect */
-	padding: 5px; /*20 px */
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-	.sidebar {
-		padding-top: 15px;
-	}
-	.sidebar a {
-		font-size: 18px;
-	}
-}
-
-.header {
-	/* height: 55px; */
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-
-	@apply p-4;
-}
-
-.left-header {
-	/* min-width: 300px; */
-	font-size: 25px;
-	/* margin-left: 0px;
-	margin-top: 0px; */
-}
-
-.right-header {
-}
-
-h1 {
-	margin-left: 40px; /*90px centers with Team Second Place*/
-	margin-top: 40px;
 }
 
 .slider-container {
