@@ -15,7 +15,7 @@
 	import { page } from '$app/stores';
 
 	import { next } from '@babichjacob/emitter';
-	import { asyncFiltered, asyncFilteredMapped, filtered } from '$lib/more-store-tools';
+	import { asyncFiltered, asyncFilteredMapped, filtered, satisfies } from '$lib/more-store-tools';
 	import { goto } from '$app/navigation';
 
 	const microcontrollerId = localStorageWritable('microcontroller-id', 'system-number-1');
@@ -24,13 +24,19 @@
 
 	/** @type {"Unattempted" | "Pending" | "SystemOffline" | "Successful" | "Rejected"} */
 	let state = 'Unattempted';
-</script>
 
-<form
-	class="flex-1 flex flex-col justify-center"
-	class:opacity-50={state === 'Pending'}
-	class:pointer-events-none={state === 'Pending'}
-	on:submit={async () => {
+	const signIn = async () => {
+		const connection = $page.data.connection;
+		console.debug({ connection });
+
+		await Promise.race([
+			satisfies($page.data.connection, (state) => {
+				console.debug({ state });
+				return state === 'Open';
+			}),
+			new Promise((resolve) => setTimeout(resolve, 100))
+		]);
+
 		/** @type {WebSocket} */
 		const websocket = $page.data.websocket;
 
@@ -83,7 +89,22 @@
 		if (state === 'Successful') {
 			await goto('/lighting');
 		}
-	}}
+	};
+
+	const signInAfterDelay = async () => {
+		await new Promise((resolve) => setTimeout(resolve, 300));
+
+		signIn();
+	};
+
+	signInAfterDelay();
+</script>
+
+<form
+	class="flex-1 flex flex-col justify-center"
+	class:opacity-50={state === 'Pending'}
+	class:pointer-events-none={state === 'Pending'}
+	on:submit={signIn}
 >
 	<div class="flex justify-center">
 		<div class="rounded-full p-4 bg-primary">

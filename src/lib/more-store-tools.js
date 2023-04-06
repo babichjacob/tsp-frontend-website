@@ -37,7 +37,7 @@ export const asyncFiltered = (emitter, predicate) => {
  * @template Event
  * @template MappedEvent
  * @param {import("@babichjacob/emitter").Listenable<Event>} emitter
- * @param {function(Event): [] | [MappedEvent]} predicate
+ * @param {function(Event): Promise<[] | [MappedEvent]>} predicate
  * @returns {import("@babichjacob/emitter").Listenable<MappedEvent>}
  */
 export const asyncFilteredMapped = (emitter, predicate) => {
@@ -63,4 +63,28 @@ export const asyncFilteredMapped = (emitter, predicate) => {
  */
 export const latest = (emitter, initial) => {
 	return readable(initial, emitter.listen);
+};
+
+/**
+ * @template Value
+ * @param {import('@babichjacob/store').Readble<Value>} store
+ * @param {function(Value): boolean} predicate
+ * @returns {Promise<Value>}
+ */
+export const satisfies = (store, predicate) => {
+	return new Promise((resolve) => {
+		const unsubscribe = store.subscribe((value) => {
+			if (predicate(value)) {
+				resolve(value);
+
+				try {
+					unsubscribe();
+				} catch {
+					setImmediate(() => {
+						unsubscribe();
+					});
+				}
+			}
+		});
+	});
 };
