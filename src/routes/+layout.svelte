@@ -42,9 +42,7 @@
 
 	const adminLinks = [
 		// TODO
-		{ href: '/lighting', text: 'Add Trusted User', icon: bulb },
-		{ href: '/live-feed', text: 'Live Feed', icon: cameraHome },
-		{ href: '/history', text: 'History', icon: calendar }
+		{ href: '/add-trusted-user', text: 'Add Trusted User', icon: bulb },
 	];
 
 	let navOpen = false;
